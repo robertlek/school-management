@@ -1,1 +1,1 @@
-<template>School Management</template>
+<template>School Management - Home</template>
