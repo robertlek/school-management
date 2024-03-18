@@ -19,9 +19,11 @@
           <span class="pi pi-user mr-2" />
           <span>Login</span>
         </div>
-        <div class="text-teal-300 ml-3">
-          <span class="pi pi-user-plus mr-2" />
-          <span>Register</span>
+        <div class="ml-3">
+          <RouterLink to="/register" class="text-teal-300 no-underline">
+            <span class="pi pi-user-plus mr-2" />
+            <span>Register</span>
+          </RouterLink>
         </div>
       </div>
     </template>
