@@ -39,12 +39,17 @@ const state = reactive({
     {
       label: "Home",
       icon: "pi pi-home",
-      route: "home"
+      route: "/home"
     },
     {
       label: "About",
       icon: "pi pi-link",
-      route: "about"
+      route: "/about"
+    },
+    {
+      label: "Courses",
+      icon: "pi pi-book",
+      route: "/courses"
     }
   ]
 });
