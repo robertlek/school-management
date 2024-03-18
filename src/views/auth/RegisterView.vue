@@ -52,6 +52,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import { useToast } from "primevue/usetoast";
+import { useStudentsStore } from "@/stores/StudentsStore";
 
 import Button from "primevue/button";
 import Calendar from "primevue/calendar";
@@ -59,6 +60,7 @@ import InputText from "primevue/inputtext";
 import Toast from "primevue/toast";
 
 const toast = useToast();
+const studentsStore = useStudentsStore();
 
 const state = reactive({
   firstName: "",
@@ -72,6 +74,12 @@ const registerStudent = () => {
     summary: "Account registered",
     detail: "Your student account has been registered!",
     life: 3000
+  });
+
+  studentsStore.registerStudent({
+    firstName: state.firstName,
+    lastName: state.lastName,
+    dateOfBirth: state.dateOfBirth
   });
 };
 </script>
