@@ -44,9 +44,9 @@ const state = reactive({
       route: "/home"
     },
     {
-      label: "About",
-      icon: "pi pi-link",
-      route: "/about"
+      label: "Students",
+      icon: "pi pi-users",
+      route: "/students"
     },
     {
       label: "Courses",
