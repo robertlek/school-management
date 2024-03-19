@@ -8,14 +8,20 @@ export const useTeachersStore = defineStore("teachers", {
     };
   },
   actions: {
-    registerTeacher(teacher: Teacher) {
-      fetch("https://localhost:44320/api/teacher", {
+    async registerTeacher(teacher: Teacher) {
+      const response = await fetch("https://localhost:44320/api/teacher", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(teacher)
       });
+
+      if (!response.ok) {
+        return false;
+      }
+
+      return true;
     },
     async getAllTeachers() {
       const response = await fetch("https://localhost:44320/api/teacher");
@@ -30,7 +36,7 @@ export const useTeachersStore = defineStore("teachers", {
       if (response.ok) {
         return await response.json();
       } else {
-        throw Error("The teacher is invalid.");
+        throw Error;
       }
     }
   }

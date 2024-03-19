@@ -8,14 +8,20 @@ export const useStudentsStore = defineStore("students", {
     };
   },
   actions: {
-    registerStudent(student: Student) {
-      fetch("https://localhost:44320/api/student", {
+    async registerStudent(student: Student) {
+      const response = await fetch("https://localhost:44320/api/student", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(student)
       });
+
+      if (!response.ok) {
+        return false;
+      }
+
+      return true;
     },
     async getAllStudents() {
       const response = await fetch("https://localhost:44320/api/student");
@@ -30,7 +36,7 @@ export const useStudentsStore = defineStore("students", {
       if (response.ok) {
         return await response.json();
       } else {
-        throw Error("The student is invalid.");
+        throw Error;
       }
     }
   }

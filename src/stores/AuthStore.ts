@@ -28,21 +28,31 @@ export const useAuthStore = defineStore("auth", {
       const { fetchStudent } = useStudentsStore();
       const { fetchTeacher } = useTeachersStore();
 
-      console.log("Current state is: " + this.userId);
-
       if (role === "student") {
-        const student = await fetchStudent(id);
+        try {
+          const student = await fetchStudent(id);
 
-        this.userId = student.id;
-        this.role = role;
+          this.userId = student.id;
+          this.role = role;
+        } catch {
+          return false;
+        }
       } else {
-        const teacher = await fetchTeacher(id);
+        try {
+          const teacher = await fetchTeacher(id);
 
-        this.userId = teacher.id;
-        this.role = teacher.isGuest ? "guest-teacher" : "teacher";
+          this.userId = teacher.id;
+          this.role = teacher.isGuest ? "guest-teacher" : "teacher";
+        } catch {
+          return false;
+        }
       }
 
-      console.log("Current state is: " + this.userId);
+      return true;
+    },
+    logout() {
+      this.userId = null;
+      this.role = "";
     }
   }
 });

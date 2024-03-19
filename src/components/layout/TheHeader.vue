@@ -14,7 +14,7 @@
     </template>
 
     <template #end>
-      <div class="flex">
+      <div v-if="!isLoggedIn" class="flex">
         <RouterLink to="/login" class="text-teal-300 no-underline mr-3">
           <span class="pi pi-user mr-2" />
           <span>Login</span>
@@ -26,15 +26,26 @@
           </RouterLink>
         </div>
       </div>
+      <div
+        v-else
+        class="flex align-items-center text-teal-300 cursor-pointer"
+        @click="authStore.logout"
+      >
+        <span class="pi pi-power-off mr-2" />
+        <span>Logout</span>
+      </div>
     </template>
   </Menubar>
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, computed } from "vue";
 import { RouterLink } from "vue-router";
+import { useAuthStore } from "@/stores/AuthStore";
 
 import Menubar from "primevue/menubar";
+
+const authStore = useAuthStore();
 
 const state = reactive({
   menuItems: [
@@ -54,5 +65,9 @@ const state = reactive({
       route: "/courses"
     }
   ]
+});
+
+const isLoggedIn = computed(() => {
+  return authStore.isLoggedIn;
 });
 </script>
