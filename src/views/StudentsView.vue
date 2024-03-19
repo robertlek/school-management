@@ -14,6 +14,7 @@
 <script setup lang="ts">
 import { useStudentsStore } from "@/stores/StudentsStore";
 import { reactive, onMounted } from "vue";
+import type Student from "@/interfaces/Student";
 
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
@@ -25,6 +26,6 @@ onMounted(async () => {
 });
 
 const state = reactive({
-  students: []
+  students: [] as Student[]
 });
 </script>
