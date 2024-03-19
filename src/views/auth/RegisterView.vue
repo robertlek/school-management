@@ -73,6 +73,8 @@ import { reactive } from "vue";
 import { useToast } from "primevue/usetoast";
 import { useStudentsStore } from "@/stores/StudentsStore";
 import { useTeachersStore } from "@/stores/TeachersStore";
+import type Student from "@/interfaces/Student";
+import type Teacher from "@/interfaces/Teacher";
 
 import Button from "primevue/button";
 import Calendar from "primevue/calendar";
@@ -97,14 +99,14 @@ const registerUser = () => {
       firstName: state.firstName,
       lastName: state.lastName,
       dateOfBirth: state.dateOfBirth
-    });
+    } as Student);
   } else {
     teachersStore.registerTeacher({
       firstName: state.firstName,
       lastName: state.lastName,
       dateOfBirth: state.dateOfBirth,
       isGuest: state.role === "guest-teacher"
-    });
+    } as Teacher);
   }
 
   toast.add({

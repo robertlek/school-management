@@ -1,13 +1,14 @@
 import { defineStore } from "pinia";
+import type Teacher from "@/interfaces/Teacher";
 
 export const useTeachersStore = defineStore("teachers", {
   state: () => {
     return {
-      teachers: []
+      teachers: [] as Teacher[]
     };
   },
   actions: {
-    registerTeacher(teacher: any) {
+    registerTeacher(teacher: Teacher) {
       fetch("https://localhost:44320/api/teacher", {
         method: "POST",
         headers: {
