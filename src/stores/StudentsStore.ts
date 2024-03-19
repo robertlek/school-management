@@ -23,6 +23,15 @@ export const useStudentsStore = defineStore("students", {
       this.students = data;
 
       return this.students;
+    },
+    async fetchStudent(id: String) {
+      const response = await fetch(`https://localhost:44320/api/student/${id}`);
+
+      if (response.ok) {
+        return await response.json();
+      } else {
+        throw Error("The student is invalid.");
+      }
     }
   }
 });

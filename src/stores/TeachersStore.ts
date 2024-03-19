@@ -23,6 +23,15 @@ export const useTeachersStore = defineStore("teachers", {
       this.teachers = data;
 
       return this.teachers;
+    },
+    async fetchTeacher(id: String) {
+      const response = await fetch(`https://localhost:44320/api/teacher/${id}`);
+
+      if (response.ok) {
+        return await response.json();
+      } else {
+        throw Error("The teacher is invalid.");
+      }
     }
   }
 });

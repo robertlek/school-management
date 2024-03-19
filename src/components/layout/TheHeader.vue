@@ -15,10 +15,10 @@
 
     <template #end>
       <div class="flex">
-        <div class="text-teal-300 mr-3">
+        <RouterLink to="/login" class="text-teal-300 no-underline mr-3">
           <span class="pi pi-user mr-2" />
           <span>Login</span>
-        </div>
+        </RouterLink>
         <div class="ml-3">
           <RouterLink to="/register" class="text-teal-300 no-underline">
             <span class="pi pi-user-plus mr-2" />
