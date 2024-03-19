@@ -21,6 +21,9 @@ export const useAuthStore = defineStore("auth", {
     },
     isGuestTeacher(state) {
       return state.role === "guest-teacher";
+    },
+    getUserId(state): string {
+      return state.userId !== null ? state.userId : "";
     }
   },
   actions: {

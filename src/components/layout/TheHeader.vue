@@ -63,6 +63,11 @@ const state = reactive({
       label: "Courses",
       icon: "pi pi-book",
       route: "/courses"
+    },
+    {
+      label: "Register Course",
+      icon: "pi pi-book",
+      route: "/register-course"
     }
   ]
 });

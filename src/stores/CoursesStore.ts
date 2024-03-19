@@ -51,14 +51,20 @@ export const useCoursesStore = defineStore("courses", {
     getAll() {
       return this.courses;
     },
-    registerStudent(student: any) {
-      fetch("https://localhost:44320/api/student", {
+    async registerCourse(course: { teacherId: string; name: string; description: string }) {
+      const response = await fetch("https://localhost:44320/api/course", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(student)
+        body: JSON.stringify(course)
       });
+
+      if (!response.ok) {
+        return false;
+      }
+
+      return true;
     }
   }
 });
